@@ -1,0 +1,55 @@
+{
+  "rules": {
+    "no-any": true,
+    "no-console": true,
+    "no-import-side-effect": true,
+    "no-non-null-assertion": true,
+    "no-parameter-reassignment": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-unused-expression": [
+      true,
+      "allow-fast-null-checks"
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "typedef": [
+      true,
+      "array-destructuring",
+      "arrow-call-signature",
+      "arrow-parameter",
+      "call-signature",
+      "member-variable-declaration",
+      "object-destructuring",
+      "parameter",
+      "property-declaration",
+      "variable-declaration"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "whitespace": [
+      true,
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ]
+  }
+}

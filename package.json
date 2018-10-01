@@ -1,0 +1,54 @@
+{
+  "name": "parso",
+  "version": "0.0.8",
+  "author": "Attila Olah",
+  "description": "Lightweight & performant date parse for terrible date formats.",
+  "license": "MIT",
+  "main": "public_api.js",
+  "scripts": {
+    "build": "tsc",
+    "prettify:ts": "prettier --parser typescript --write ./src/**/*.ts ./src/*.ts",
+    "lint": "tslint --project ./tsconfig.json --format stylish",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.md": [
+      "prettier --parser markdown --write",
+      "git add"
+    ],
+    "*.ts": [
+      "prettier --parser typescript --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoNameProvided/parso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NoNameProvided/parso/issues"
+  },
+  "homepage": "https://github.com/NoNameProvided/parso#readme",
+  "keywords": [
+    "parso",
+    "date",
+    "date-time",
+    "parsing",
+    "parser"
+  ],
+  "devDependencies": {
+    "@types/jest": "23.3.2",
+    "@types/node": "10.11.3",
+    "jest": "23.6.0",
+    "ts-jest": "23.10.3",
+    "typescript": "3.1.1"
+  }
+}
