@@ -26,11 +26,15 @@ export class ParserRegistry {
    * @param singleOrMultipeParser one or an array of parsers implementing the `DateParser` type.
    */
   public registerParsers(singleOrMultipeParser: DateParser | DateParser[]): void {
-    if (Array.isArray(singleOrMultipeParser)) {
-      this.PARSERS.push(...singleOrMultipeParser);
-    } else {
-      this.PARSERS.push(singleOrMultipeParser);
-    }
+    singleOrMultipeParser = Array.isArray(singleOrMultipeParser) ? [...singleOrMultipeParser] : [singleOrMultipeParser];
+
+    singleOrMultipeParser.forEach(parser => {
+      const exists = this.PARSERS.find(registeredParser => registeredParser === parser);
+
+      if (!exists) {
+        this.PARSERS.push(parser);
+      }
+    });
   }
 
   /**
@@ -47,7 +51,7 @@ export class ParserRegistry {
   }
 
   private internalRemoveParser(singleParser: DateParser): void {
-    const index = this.PARSERS.findIndex(existingParser => existingParser !== singleParser);
+    const index = this.PARSERS.findIndex(existingParser => existingParser == singleParser);
 
     if (index > -1) {
       this.PARSERS.splice(index, 1);
