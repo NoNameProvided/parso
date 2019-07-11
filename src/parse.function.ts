@@ -20,9 +20,7 @@ export function parse(value: string | number | Date, parseOptions: ParseOptions 
     throw new ParsoInvalidInputError(value);
   }
 
-  const currentParsers = parseOptions.customRegistry
-    ? parseOptions.customRegistry.parsers
-    : DefaulParserRegistry.parsers;
+  const currentParsers = parseOptions.customRegistry ? parseOptions.customRegistry.parsers : DefaulParserRegistry.parsers;
 
   const firstWorkingParser = currentParsers.find(parser => parser(value) !== undefined);
 
