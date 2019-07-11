@@ -20,6 +20,13 @@ export function parse(value: string | number | Date, parseOptions: ParseOptions 
     throw new ParsoInvalidInputError(value);
   }
 
+  /**
+   * When `handleNumberAsEpoch` is set to true we treat numbers as millisecond values.
+   */
+  if (typeof value !== 'number' && parseOptions.handleNumberAsEpoch === true) {
+    return new Date(value);
+  }
+
   const currentParsers = parseOptions.customRegistry ? parseOptions.customRegistry.parsers : DefaulParserRegistry.parsers;
 
   const firstWorkingParser = currentParsers.find(parser => parser(value) !== undefined);
