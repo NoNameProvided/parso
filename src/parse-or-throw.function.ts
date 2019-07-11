@@ -9,7 +9,7 @@ import { parse } from './parse.function';
  * @param value any string or number to parse into a Date
  * @param parseOptions
  */
-export function parseOrThrow(value: string | number | Date, parseOptions: ParseOptions): Date {
+export function parseOrThrow(value: string | number | Date, parseOptions: ParseOptions = {}): Date {
   const parseResult = parse(value, parseOptions);
 
   if (parseResult == null) {
