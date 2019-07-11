@@ -3,11 +3,14 @@ node_js:
   - 'lts/*'
 install:
   - npm ci
+  - npm install codecov -g
 script:
   - npm run prettier:check
   - npm run lint:check
   - npm run test:ci
   - npm run build
+after_success:
+  - codecov
 before_deploy:
   - cp package.json build/package.json
   - cp LICENSE build/LICENSE
