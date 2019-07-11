@@ -30,6 +30,7 @@
     "lint:check": "eslint --max-warnings 0 src/**/*.ts",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --collect-coverage",
     "test:ci": "jest --runInBand"
   },
   "husky": {
