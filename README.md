@@ -151,7 +151,7 @@ Parso exports a default registry instance named `defaulParserRegistry` which is 
 
 ### `DateParser` type
 
-See the [parser documentation](parsers) for details.
+See the [parser documentation][parsers] for details.
 
 [parsers]: docs/parsers.md
 [date-fns]: https://github.com/date-fns/date-fns
