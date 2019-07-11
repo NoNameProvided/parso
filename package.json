@@ -1,14 +1,33 @@
 {
   "name": "parso",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "author": "Attila Olah",
-  "description": "Lightweight & performant date parse for terrible date formats.",
+  "description": "Lightweight & performant date parser for terrible date formats.",
   "license": "MIT",
-  "main": "public_api.js",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoNameProvided/parso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NoNameProvided/parso/issues"
+  },
+  "homepage": "https://github.com/NoNameProvided/parso#readme",
+  "keywords": [
+    "parso",
+    "date",
+    "date-time",
+    "parsing",
+    "parser"
+  ],
   "scripts": {
-    "build": "tsc",
-    "prettify:ts": "prettier --parser typescript --write ./src/**/*.ts ./src/*.ts",
-    "lint": "tslint --project ./tsconfig.json --format stylish",
+    "build": "npm run build:clean && npm run build:tsc",
+    "build:clean": "rimraf ./build",
+    "build:tsc": "tsc --project ./tsconfig.json",
+    "prettier:format": "prettier --write ./src/**/*.ts ./src/*.ts",
+    "prettier:check": "prettier --check ./src/**/*.ts ./src/*.ts",
+    "lint:fix": "eslint --max-warnings 0 src/**/*.ts --fix",
+    "lint:check": "eslint --max-warnings 0 src/**/*.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand"
@@ -29,26 +48,20 @@
       "git add"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NoNameProvided/parso.git"
-  },
-  "bugs": {
-    "url": "https://github.com/NoNameProvided/parso/issues"
-  },
-  "homepage": "https://github.com/NoNameProvided/parso#readme",
-  "keywords": [
-    "parso",
-    "date",
-    "date-time",
-    "parsing",
-    "parser"
-  ],
   "devDependencies": {
-    "@types/jest": "23.3.2",
-    "@types/node": "10.11.3",
-    "jest": "23.6.0",
-    "ts-jest": "23.10.3",
-    "typescript": "3.1.1"
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.2",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   }
 }

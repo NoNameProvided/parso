@@ -1,25 +1,24 @@
 language: node_js
 node_js:
   - 'lts/*'
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 install:
-  - npm install
-after_success:
-- npm run build
+  - npm ci
+script:
+  - npm run prettier:check
+  - npm run lint:check
+  - npm run test:ci
+  - npm run build
 before_deploy:
-- cp package.json build/package.json
-- cp README.md build/README.md
-- cp CHANGELOG.md build/CHANGELOG.md
-- cd build
-deploy:
-  provider: npm
-  email: attila.olah@outlook.com
-  api_key:
-    secure: $NPM_TOKEN
-  on:
-    tags: true
-  skip_cleanup: true
-cache:
-  directories:
-  - node_modules
+  - cp package.json build/package.json
+  - cp LICENSE build/LICENSE
+  - cp README.md build/README.md
+  - cp CHANGELOG.md build/CHANGELOG.md
+  - cd build
+# deploy:
+#   provider: npm
+#   email: attila.olah@outlook.com
+#   api_key:
+#     secure: $NPM_PUBLISH_TOKEN
+#   on:
+#     branch: master
+#   skip_cleanup: true

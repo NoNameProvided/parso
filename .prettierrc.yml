@@ -1,7 +1,7 @@
 # Configuration file for Prettier
 # Used before every commit to format the code-style
 
-printWidth: 120
+printWidth: 160
 tabWidth: 2
 useTabs: false
 semi: true
