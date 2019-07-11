@@ -1,6 +1,6 @@
-# parso [![Build Status](https://travis-ci.com/NoNameProvided/parso.svg?token=vtTA9yuf6Qfrwwgxq3tZ&branch=develop)](https://travis-ci.com/NoNameProvided/parso)
+# Parso [![Build Status](https://travis-ci.com/NoNameProvided/parso.svg?token=vtTA9yuf6Qfrwwgxq3tZ&branch=develop)](https://travis-ci.com/NoNameProvided/parso)
 
-_parso_ is a lightweight and performant date parser for terrible date formats, it aims to help you with parsing inconsistently formatted dates.
+_Parso_ is a lightweight and performant date parser for terrible date formats, it aims to help you with parsing inconsistently formatted dates.
 
 **Details TL;DR**
 

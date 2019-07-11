@@ -1,6 +1,6 @@
 ---
 name: New DateParser request
-about: Request a new DateParser to be added to parso
+about: Request a new DateParser to be added to Parso
 title: 'feature(parsers): <title of new parser request>'
 labels: 'comp: parsers, type: feature'
 assignees: ''

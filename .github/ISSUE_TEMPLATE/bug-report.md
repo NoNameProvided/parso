@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug or issue to help us improve parso
+about: Report a bug or issue to help us improve Parso
 title: 'bug: <title of issue>'
 labels: 'type: fix'
 assignees: ''

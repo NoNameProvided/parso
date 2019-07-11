@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for parso
+about: Suggest an idea for Parso
 title: 'feature(core): <title of feature request>'
 labels: 'comp: core, type: feature'
 assignees: ''
