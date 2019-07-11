@@ -1,63 +1,65 @@
-import { DateParser } from './interfaces';
-
-const RESTRICTED_REGISTRY_STORE: DateParser[] = (<any>(global || window))[Symbol('parso-registry')] = [];
+import { DateParser } from './interfaces/date-parser.type';
 
 /**
- * Static parser registry. 
+ * The parser registry, it allows to register custom parsers.
  */
 export class ParserRegistry {
-  
+  private readonly PARSERS: DateParser[] = [];
+
   /**
-   * Returns the list of registered parsers.
+   * Returns an array of registered parsers.
    */
-  public static get parsers(): DateParser[] {
-    return [...RESTRICTED_REGISTRY_STORE];
+  public get parsers(): DateParser[] {
+    return [...this.PARSERS];
   }
 
-  public static get hasParsers(): boolean {
-    return !!RESTRICTED_REGISTRY_STORE.length;
+  /**
+   * Returns `true` if there are registered parsers and `false` otherwise.
+   */
+  public get hasParsers(): boolean {
+    return !!this.PARSERS.length;
   }
 
   /**
    * Register one or more parsers into the registry.
-   * 
+   *
    * @param singleOrMultipeParser one or an array of parsers implementing the `DateParser` type.
    */
-  public static registerParsers(singleOrMultipeParser: DateParser | DateParser[]): void {
-    if(Array.isArray(singleOrMultipeParser)) {
-      RESTRICTED_REGISTRY_STORE.push(...singleOrMultipeParser);
+  public registerParsers(singleOrMultipeParser: DateParser | DateParser[]): void {
+    if (Array.isArray(singleOrMultipeParser)) {
+      this.PARSERS.push(...singleOrMultipeParser);
     } else {
-      RESTRICTED_REGISTRY_STORE.push(singleOrMultipeParser);
+      this.PARSERS.push(singleOrMultipeParser);
     }
-  };
+  }
 
   /**
    * Removes one or more parsers by reference.
-   * 
+   *
    * @param singleOrMultipeParser one or an array of parsers implementing the `DateParser` type.
    */
-  public static removeParser(singleOrMultipeParser: DateParser | DateParser[]): void {
-    if(Array.isArray(singleOrMultipeParser)) {
+  public removeParser(singleOrMultipeParser: DateParser | DateParser[]): void {
+    if (Array.isArray(singleOrMultipeParser)) {
       singleOrMultipeParser.forEach(singleParser => this.internalRemoveParser(singleParser));
     } else {
       this.internalRemoveParser(singleOrMultipeParser);
     }
-  };
+  }
 
-  public static internalRemoveParser(singleParser: DateParser): void {
-    const index = RESTRICTED_REGISTRY_STORE.findIndex(existingParser => existingParser !== singleParser);
+  private internalRemoveParser(singleParser: DateParser): void {
+    const index = this.PARSERS.findIndex(existingParser => existingParser !== singleParser);
 
-    if(index > -1) {
-      RESTRICTED_REGISTRY_STORE.splice(index, 1);
+    if (index > -1) {
+      this.PARSERS.splice(index, 1);
     }
-  };
+  }
 
   /**
    * Removes all registered parsers.
    */
-  public static resetParsers(): void {
-    // remove elements in place without re-assigning the array
-    RESTRICTED_REGISTRY_STORE.splice(0, RESTRICTED_REGISTRY_STORE.length);
+  public resetParsers(): void {
+    this.PARSERS.splice(0, this.PARSERS.length);
   }
-
 }
+
+export const DefaulParserRegistry = new ParserRegistry();

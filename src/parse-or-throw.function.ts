@@ -1,4 +1,4 @@
-import { ParseOptions } from './interfaces';
+import { ParseOptions } from './interfaces/parse-options.interface';
 import { ParsoParseError } from './errors/parse.error';
 import { parse } from './parse.function';
 
