@@ -10,7 +10,7 @@ script:
   - npm run test:ci
   - npm run build
 after_success:
-  - codecov
+  - codecov -f ./coverage/clover.xml
 before_deploy:
   - cp package.json build/package.json
   - cp LICENSE build/LICENSE
