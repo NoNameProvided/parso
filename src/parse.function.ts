@@ -23,7 +23,7 @@ export function parse(value: string | number | Date, parseOptions: ParseOptions 
   /**
    * When `handleNumberAsEpoch` is set to true we treat numbers as millisecond values.
    */
-  if (typeof value !== 'number' && parseOptions.handleNumberAsEpoch === true) {
+  if (typeof value == 'number' && parseOptions.handleNumberAsEpoch === true) {
     return new Date(value);
   }
 

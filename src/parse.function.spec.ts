@@ -26,4 +26,12 @@ describe('parse function', () => {
   it('should return error when recieved value cannot be parsed', () => {
     expect(parse('invalid')).toBe(null);
   });
+
+  it('should respect the parseOptions.handleNumberAsEpoch option', () => {
+    const epochValue = 1546300800000; // 2019-01-01
+    const parsed = parse(epochValue, { handleNumberAsEpoch: true });
+
+    expect(parsed).toBeInstanceOf(Date);
+    expect(parsed.getTime()).toBe(epochValue);
+  });
 });
