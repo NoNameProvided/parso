@@ -28,10 +28,10 @@
     "prettier:check": "prettier --check ./src/**/*.ts ./src/*.ts",
     "lint:fix": "eslint --max-warnings 0 src/**/*.ts --fix",
     "lint:check": "eslint --max-warnings 0 src/**/*.ts",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --collect-coverage",
-    "test:ci": "jest --runInBand"
+    "test": "jest --verbose",
+    "test:watch": "jest --watch --verbose",
+    "test:coverage": "jest --collect-coverage --verbose",
+    "test:ci": "jest --runInBand --verbose"
   },
   "husky": {
     "hooks": {
