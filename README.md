@@ -153,7 +153,7 @@ Parso exports a default registry instance named `defaulParserRegistry` which is 
 
 See the [parser documentation](parsers) for details.
 
-[parsers]: ./docs/parsers.md
+[parsers]: docs/parsers.md
 [date-fns]: https://github.com/date-fns/date-fns
 [spacetime]: https://github.com/spencermountain/spacetime
 
