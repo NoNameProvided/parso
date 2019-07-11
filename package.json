@@ -31,7 +31,7 @@
     "test": "jest --verbose",
     "test:watch": "jest --watch --verbose",
     "test:coverage": "jest --collect-coverage --verbose",
-    "test:ci": "jest --runInBand --verbose"
+    "test:ci": "jest --runInBand --collect-coverage --verbose"
   },
   "husky": {
     "hooks": {
