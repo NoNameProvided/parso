@@ -1,6 +1,6 @@
 import { ParseOptions } from './interfaces/parse-options.interface';
 import { ParsoInvalidInputError } from './errors/invalid-input.error';
-import { DefaulParserRegistry } from './parser-registry.class';
+import { defaulParserRegistry } from './parser-registry.class';
 
 /**
  * Tries to parse the recieved value into a `Date` object with the registered parsers,
@@ -27,7 +27,7 @@ export function parse(value: string | number | Date, parseOptions: ParseOptions 
     return new Date(value);
   }
 
-  const currentParsers = parseOptions.customRegistry ? parseOptions.customRegistry.parsers : DefaulParserRegistry.parsers;
+  const currentParsers = parseOptions.customRegistry ? parseOptions.customRegistry.parsers : defaulParserRegistry.parsers;
 
   const firstWorkingParser = currentParsers.find(parser => parser(value) !== undefined);
 

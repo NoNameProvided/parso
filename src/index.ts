@@ -1,4 +1,4 @@
-import { DefaulParserRegistry } from './parser-registry.class';
+import { defaulParserRegistry } from './parser-registry.class';
 import { validDateParser, dashDateParser } from './parsers';
 
 /**
@@ -6,6 +6,6 @@ import { validDateParser, dashDateParser } from './parsers';
  *
  * > Note: The order or registration matters. The first matched parsers will be used always.
  */
-DefaulParserRegistry.registerParsers([validDateParser, dashDateParser]);
+defaulParserRegistry.registerParsers([validDateParser, dashDateParser]);
 
 export * from './public_api';

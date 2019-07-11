@@ -7,7 +7,7 @@ export * from './errors/invalid-input.error';
 export * from './errors/parse.error';
 
 /** Export the default parser registry instance and the class itself so users can register their own parsers. */
-export { DefaulParserRegistry } from './parser-registry.class';
+export { defaulParserRegistry as DefaulParserRegistry } from './parser-registry.class';
 export { ParserRegistry } from './parser-registry.class';
 
 /**

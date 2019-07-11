@@ -62,4 +62,8 @@ export class ParserRegistry {
   }
 }
 
-export const DefaulParserRegistry = new ParserRegistry();
+/**
+ * The defult parser registry. Parso will use the parsers registed in this
+ * instance when no custom registry is provided in the options object.
+ */
+export const defaulParserRegistry = new ParserRegistry();
