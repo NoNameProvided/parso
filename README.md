@@ -60,33 +60,105 @@ try {
 }
 ```
 
-### Registering handlers
+### Registering non default parsers
 
-By default only a sane set of parsers for the ISO 8601-ish formats are included. You can register your custom handlers with the `registerParser` function, this will register the parser globally.
+By default only a sane set of parsers for the ISO 8601-ish formats are included in the default registry. You can register non-default or your custom handlers with the `defaulParserRegistry.registerParser` function.
 
 Extra parsers are included for extreme formats, you can import them from 'parso/parsers'. You can read more about the included parsers in [their documentation][parsers].
 
 ### Writing custom parsers
 
-Date parsers are simple functions, they must meet the following criteria:
+Parsers are simple functions which implement the `DateParser` type. They must meet the following criteria:
 
 - must be sync
-- must return `undefined` when failed to parse it's value
+- must return `undefined` when failed to parse the recieved value
 
-### API
+Example:
 
-_TBD - TODO: Move this to docs/api.md_
+```ts
+/**
+ * Parses a valid date string.
+ */
+export const validDateParser: DateParser = (value: string | number): Date | undefined => {
+  const invalidDate = Number.isNaN(new Date(value).getTime());
 
-**`parse(value: string | number | Date, parseOptions: ParseOptions): Date | null`**
+  return invalidDate ? undefined : new Date(value);
+};
+```
 
-**`parseOrThrow(value: string | number | Date, parseOptions: ParseOptions): Date`**
+You can read more about custom parsers in [their documentation][parsers].
 
-**`ParserRegistry` class**
+## API
 
-**`ParseOptions` interface**
+### `parse` function
 
-**`DateParser` type**
+Tries to parse the recieved value into a `Date` object with the registered parsers, returns `null` when the parsing attempt fails.
+
+**Possible return values:**
+
+- `Date` instance
+- `null` value when none of the parsers can parse the recieived value
+
+**Possible errors:**
+
+- `ParsoInvalidInputError` when the recieved value is not a `string`, `number` or `Date` type.
+
+**Signature:**
+
+```ts
+parse(value: string | number | Date, parseOptions: ParseOptions): Date | null
+```
+
+---
+
+### `parseOrThrow` function
+
+Tries to parse the recieved value into a `Date` object with the registered parsers, throws an instance of `ParsoParseError` error when the parsing attempt fails.
+
+**Possible return values:**
+
+- `Date` instance
+
+**Possible errors:**
+
+- `ParsoInvalidInputError` when the recieved value is not a `string`, `number` or `Date` type.
+- `ParsoParseError` when none of the registered parsers can parser the recieved value.
+
+**Signature:**
+
+```ts
+parseOrThrow(value: string | number | Date, parseOptions: ParseOptions): Date
+```
+
+### `ParserRegistry` class
+
+A `ParserRegistry` instance can be used to store parsers. Which later can be passed into the parse functions via the `parseOptions.customRegistry` option.
+
+```ts
+import { ParserRegistry, parse } from 'parso';
+import { myCustomParser } from './my-custom-parser';
+
+const customRegistry = new ParserRegistry();
+
+customRegistry.registerParsers(myCustomParser);
+
+parse('2019_08_01', { customRegistry });
+```
+
+Parso exports a default registry instance named `defaulParserRegistry` which is used by the parser functions when no custom registry is specified.
+
+---
+
+### `DateParser` type
+
+See the [parser documentation](parsers) for details.
 
 [parsers]: ./docs/parsers.md
 [date-fns]: https://github.com/date-fns/date-fns
 [spacetime]: https://github.com/spencermountain/spacetime
+
+## License
+
+[MIT](./LICENSE)
+
+[schd-official-page]: https://fireflyworlds.com/games/strongholdcrusader/
