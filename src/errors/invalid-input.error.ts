@@ -4,7 +4,7 @@
 export class ParsoInvalidInputError extends Error {
   public readonly name: string = 'ParsoInvalidInputError';
 
-  constructor(public recievedValue: any) {
+  constructor(public recievedValue: unknown) {
     super(`[Parso] Invalid input value! Only string, number and Date instances can be passed to the parsers.`);
   }
 }
